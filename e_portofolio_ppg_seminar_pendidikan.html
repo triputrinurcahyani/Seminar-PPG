@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portofolio PPG - Triputri Nurcahyani, S.Sos.</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            dark: '#004D4D',
+                            DEFAULT: '#005F60',
+                            mid: '#008080',
+                            light: '#20B2AA',
+                            soft: '#E0F2F1',
+                            accent: '#3CAEA3'
+                        },
+                        ivory: {
+                            DEFAULT: '#FDFBF7',
+                            soft: '#FFFFF0',
+                            card: '#FFFFFF',
+                            border: '#E8E5DF'
+                        },
+                        slateDark: '#1C2833'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #1C2833;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 95, 96, 0.12);
+        }
+        .glass-dark {
+            background: rgba(0, 77, 77, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 95, 96, 0.08);
+        }
+        .hero-slide {
+            transition: opacity 1.2s ease-in-out;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #008080;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-teal-light selection:text-white">
+
+    <!-- NAVBAR HEADER (Sticky) -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-card border-b border-teal-mid/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo & Brand -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-teal text-ivory flex items-center justify-center font-bold text-xl shadow-md group-hover:bg-teal-light transition duration-300">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-teal-dark block leading-tight">Triputri Nurcahyani, S.Sos.</span>
+                        <span class="text-xs text-teal-mid font-medium tracking-wider uppercase">Broadcasting & Perfilman PPG</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-semibold text-slateDark">
+                    <a href="#home" class="px-3 py-2 rounded-lg hover:text-teal hover:bg-teal-soft/60 transition">Home</a>
+                    <a href="#about" class="px-3 py-2 rounded-lg hover:text-teal hover:bg-teal-soft/60 transition">About Me</a>
+                    <a href="#visi" class="px-3 py-2 rounded-lg hover:text-teal hover:bg-teal-soft/60 transition">Visi (LK 1)</a>
+                    <a href="#learning-journey" class="px-3 py-2 rounded-lg hover:text-teal hover:bg-teal-soft/60 transition">Learning Journey</a>
+                    <a href="#karya-inovasi" class="px-3 py-2 rounded-lg hover:text-teal hover:bg-teal-soft/60 transition">Karya Inovasi</a>
+                    <a href="#contact" class="ml-2 px-4 py-2.5 rounded-xl bg-teal text-ivory hover:bg-teal-dark shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> Kontak
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-teal-dark hover:text-teal focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-ivory-card border-b border-teal-soft px-4 pt-2 pb-6 space-y-2 text-sm font-medium shadow-xl">
+            <a href="#home" class="block px-3 py-2 rounded-lg text-slateDark hover:bg-teal-soft">Home</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-slateDark hover:bg-teal-soft">About Me</a>
+            <a href="#visi" class="block px-3 py-2 rounded-lg text-slateDark hover:bg-teal-soft">Visi (LK 1)</a>
+            <a href="#learning-journey" class="block px-3 py-2 rounded-lg text-slateDark hover:bg-teal-soft">Learning Journey</a>
+            <a href="#karya-inovasi" class="block px-3 py-2 rounded-lg text-slateDark hover:bg-teal-soft">Karya Inovasi</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg bg-teal text-white text-center mt-2">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- 1. HEADER / HERO SECTION WITH BACKGROUND SLIDESHOW -->
+    <section id="home" class="relative pt-32 pb-24 md:pt-40 md:pb-32 text-ivory overflow-hidden min-h-[90vh] flex items-center">
+        
+        <!-- BACKGROUND SLIDESHOW CONTAINER -->
+        <div class="absolute inset-0 z-0 overflow-hidden bg-teal-dark">
+            
+            <!-- [EDIT_HERO_IMAGE_1]: Slide 1 Background Image URL -->
+            <div class="hero-slide absolute inset-0 opacity-100 bg-cover bg-center" 
+                 style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1920&q=80');">
+            </div>
+
+            <!-- [EDIT_HERO_IMAGE_2]: Slide 2 Background Image URL -->
+            <div class="hero-slide absolute inset-0 opacity-0 bg-cover bg-center" 
+                 style="background-image: url('https://images.unsplash.com/photo-1518100970790-21a1b415a999?auto=format&fit=crop&w=1920&q=80');">
+            </div>
+
+            <!-- [EDIT_HERO_IMAGE_3]: Slide 3 Background Image URL -->
+            <div class="hero-slide absolute inset-0 opacity-0 bg-cover bg-center" 
+                 style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80');">
+            </div>
+
+            <!-- Gradient & Dark Overlay for Text Readability -->
+            <div class="absolute inset-0 bg-gradient-to-r from-teal-dark/95 via-teal-dark/80 to-teal-dark/65"></div>
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <!-- HERO CONTENT CONTAINER -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Info -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-xs sm:text-sm font-medium text-ivory border border-white/20">
+                        <i class="fa-solid fa-graduation-cap text-teal-light"></i>
+                        <span>E-Portofolio Seminar Pendidikan PPG Prajabatan</span>
+                    </div>
+
+                    <!-- [EDIT_HERO_TITLE]: Name & Degree -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+                        Triputri Nurcahyani, <span class="text-teal-light italic">S.Sos.</span>
+                    </h1>
+
+                    <!-- [EDIT_HERO_SUBTITLE]: Program & Specialty -->
+                    <p class="text-base sm:text-lg text-ivory/90 max-w-2xl font-light leading-relaxed">
+                        Mahasiswa PPG Prajabatan Bidang Studi <strong>Broadcasting dan Perfilman</strong>. Berkomitmen menghadirkan pembelajaran media berbasis proyek yang inovatif, berpusat pada siswa, dan relevan dengan perkembangan industri penyiaran digital Indonesia.
+                    </p>
+                    
+                    <div class="pt-4 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#learning-journey" class="px-6 py-3.5 rounded-xl bg-teal-light text-teal-dark font-bold hover:bg-white shadow-lg hover:shadow-teal-light/20 transition flex items-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> Lihat Learning Journey
+                        </a>
+                        <a href="#karya-inovasi" class="px-6 py-3.5 rounded-xl border border-ivory/30 hover:bg-ivory/10 font-semibold transition flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb"></i> Modul Kartu Tantangan
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Profile Frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-teal-light to-ivory/80 rounded-3xl blur-lg opacity-40 group-hover:opacity-70 transition duration-500"></div>
+                        
+                        <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-4 border-ivory/30 shadow-2xl bg-teal-dark">
+                            <!-- [EDIT_HERO_PROFILE_PHOTO]: Ganti URL foto Anda -->
+                            <img id="profile-photo-img" 
+                                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Triputri Nurcahyani, S.Sos." 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                                 onerror="this.src='https://placehold.co/600x800/004D4D/FFFFFF?text=Triputri+Nurcahyani'">
+                            
+                            <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl glass-card text-teal-dark text-xs flex items-center justify-between shadow-lg">
+                                <div>
+                                    <p class="font-bold">Broadcasting & Perfilman</p>
+                                    <p class="text-[10px] text-teal-mid font-medium">Sineas & Pendidik Vokasi</p>
+                                </div>
+                                <i class="fa-solid fa-video text-teal text-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+            <button onclick="setSlide(0)" class="slide-dot w-8 h-2 rounded-full bg-teal-light transition-all duration-300"></button>
+            <button onclick="setSlide(1)" class="slide-dot w-2 h-2 rounded-full bg-ivory/50 transition-all duration-300"></button>
+            <button onclick="setSlide(2)" class="slide-dot w-2 h-2 rounded-full bg-ivory/50 transition-all duration-300"></button>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="py-20 bg-ivory">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold text-teal tracking-widest mb-2">Tentang Saya</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-teal-dark">Mengenal Pendidik & Sineas</h3>
+                <div class="w-16 h-1 bg-teal-light mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Profile Summary -->
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow hover:border-teal/30 transition">
+                    <div class="w-12 h-12 rounded-xl bg-teal-soft text-teal flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-teal-dark mb-4">Profil Diri</h4>
+                    <!-- [EDIT_ABOUT_BIO] -->
+                    <p class="text-slateDark leading-relaxed text-sm">
+                        Saya adalah Lulusan Sarjana Ilmu Sosial (S.Sos) yang memiliki minat mendalam pada kajian komunikasi visual, penyutradaraan, dan pedagogi sekolah kejuruan. Sebagai calon guru SMK Broadcasting dan Perfilman, saya memadukan keahlian akademis dan teknis untuk melahirkan talenta muda bidang kreatif.
+                    </p>
+                </div>
+
+                <!-- Media Skills -->
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow hover:border-teal/30 transition">
+                    <div class="w-12 h-12 rounded-xl bg-teal-soft text-teal flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-teal-dark mb-4">Keahlian Bidang Studi</h4>
+                    <!-- [EDIT_ABOUT_SKILLS] -->
+                    <ul class="space-y-2.5 text-sm text-slateDark">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-teal-light text-xs"></i> Manajemen Produksi Film & Acara TV</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-teal-light text-xs"></i> Penulisan Naskah & Storyboarding</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-teal-light text-xs"></i> Pengoperasian Kamera & Tata Cahaya</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-teal-light text-xs"></i> Penyuntingan Gambar & Tata Suara</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-teal-light text-xs"></i> Pengajaran Berbasis Projek (PjBL) SMK</li>
+                    </ul>
+                </div>
+
+                <!-- Educator Vision -->
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow hover:border-teal/30 transition">
+                    <div class="w-12 h-12 rounded-xl bg-teal-soft text-teal flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-teal-dark mb-4">Portofolio Media & Edukasi</h4>
+                    <!-- [EDIT_ABOUT_EXPERIENCE] -->
+                    <p class="text-slateDark leading-relaxed text-sm mb-4">
+                        Berpengalaman memfasilitasi pembuatan karya karya film pendek siswa, menyusun modul ajar interaktif, serta menjembatani proses pembelajaran sekolah dengan standar operasional prosedur (SOP) Industri Broadcasting.
+                    </p>
+                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-teal-dark bg-teal-soft px-3 py-1 rounded-full">PPG Prajabatan 2023/2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. VISI GURU & PENDIDIKAN (LK 1) -->
+    <section id="visi" class="py-20 bg-teal-dark text-ivory relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold text-teal-light tracking-widest mb-2">Refleksi Lembar Kerja 1</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold">Visi Guru & Pendidikan Indonesia</h3>
+                <div class="w-16 h-1 bg-teal-light mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Visi Guru Broadcasting -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-teal-light text-teal-dark flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <h4 class="text-xl font-serif font-bold text-ivory">Visi Sebagai Guru Profesional</h4>
+                        </div>
+                        <!-- [EDIT_VISI_GURU] -->
+                        <blockquote class="italic text-ivory/90 leading-relaxed font-light mb-6 text-sm sm:text-base">
+                            "Menjadi pendidik Broadcasting dan Perfilman yang mampu memerdekakan potensi siswa, menumbuhkan etika komunikasi media, serta melatih daya kritis dan kreativitas sinematik untuk menjawab tantangan industri media modern."
+                        </blockquote>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-teal-light">
+                        <i class="fa-solid fa-certificate"></i>
+                        <span>Komitmen Guru Profesional Vokasi</span>
+                    </div>
+                </div>
+
+                <!-- Pandangan Pendidikan Indonesia -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-teal-light text-teal-dark flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-earth-asia"></i>
+                            </div>
+                            <h4 class="text-xl font-serif font-bold text-ivory">Pandangan Pendidikan Indonesia</h4>
+                        </div>
+                        <!-- [EDIT_VISI_PENDIDIKAN_INDONESIA] -->
+                        <p class="text-ivory/90 leading-relaxed text-sm font-light mb-6">
+                            Pendidikan di Indonesia perlu terus berorientasi pada keberpihakan kepada murid (student-centered), mengakar pada nilai-nilai Ki Hajar Dewantara, serta tanggap terhadap transformasi teknologi digital tanpa mencabut siswa dari identitas budaya bangsa.
+                        </p>
+                    </div>
+
+                    <!-- PDF Action Bar -->
+                    <div class="pt-4 border-t border-white/10 flex justify-between items-center flex-wrap gap-2">
+                        <span class="text-xs text-ivory/80">Dokumen Visi Pendidikan (LK 1):</span>
+                        <div class="flex gap-2">
+                            <!-- Button trigger preview modal -->
+                            <button onclick="openPdfModal('[EDIT_LINK_FILE_LK1.pdf]', 'Dokumen Refleksi LK 1 - Visi Pendidikan')" 
+                                    class="text-xs bg-teal-light text-teal-dark px-3 py-1.5 rounded-lg font-bold hover:bg-white transition flex items-center gap-1">
+                                <i class="fa-solid fa-eye"></i> Pratinjau
+                            </button>
+                            <!-- [EDIT_LINK_FILE_LK1.pdf]: Ganti URL file LK1 -->
+                            <a href="[EDIT_LINK_FILE_LK1.pdf]" download target="_blank" 
+                               class="text-xs bg-ivory/20 text-ivory border border-ivory/30 px-3 py-1.5 rounded-lg font-bold hover:bg-ivory hover:text-teal-dark transition flex items-center gap-1">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. LEARNING JOURNEY (ESSAY FILE INTEGRATION BASED ON REQUEST) -->
+    <section id="learning-journey" class="py-20 bg-ivory">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs uppercase font-bold text-teal tracking-widest mb-2">Perjalanan Akademik</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-teal-dark">Learning Journey & Refleksi Mata Kuliah</h3>
+                <p class="text-sm text-slateDark/80 mt-2">Kumpulan Refleksi Integratif Berbasis Koneksi 4C (Connection, Challenge, Concept, Change) & LK 3 PPG</p>
+                <div class="w-16 h-1 bg-teal-light mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex p-1.5 bg-teal-soft rounded-2xl border border-teal/10 space-x-1 sm:space-x-2">
+                    <button onclick="switchTab('sem1')" id="tab-sem1" class="tab-btn px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition bg-teal text-white shadow-md">
+                        Refleksi Semester 1 (Essai 4C)
+                    </button>
+                    <button onclick="switchTab('sem2')" id="tab-sem2" class="tab-btn px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-teal-dark hover:bg-white/60 transition">
+                        Refleksi Semester 2 (Essai 4C)
+                    </button>
+                    <button onclick="switchTab('ppg')" id="tab-ppg" class="tab-btn px-4 sm:px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-teal-dark hover:bg-white/60 transition">
+                        Refleksi PPG & LK 3
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 1: SEMESTER 1 INTEGRATED ESSAY -->
+            <div id="content-sem1" class="tab-content transition-all duration-300">
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-teal-soft text-teal-dark text-xs font-bold rounded-full">
+                            Penyatuan Seluruh Mata Kuliah Semester 1
+                        </div>
+                        <h4 class="text-2xl font-serif font-bold text-teal-dark">Refleksi Integratif Semester 1</h4>
+                        
+                        <!-- [EDIT_PARAGRAF_REFLEKSI_SEMESTER_1] -->
+                        <p class="text-sm text-slateDark leading-relaxed">
+                            Refleksi Semester 1 disajikan dalam bentuk <strong>essai komprehensif</strong> yang menghubungkan secara tersirat seluruh mata kuliah (seperti Filosofi Pendidikan, Pemahaman Peserta Didik, Prinsip Pengajaran dan Asesmen I, serta PPL I) menggunakan alur <strong>4C (Connection, Challenge, Concept, dan Change)</strong>. Essai ini menguraikan bagaimana teori pedagogi berpadu dengan tantangan nyata pembelajaran studio sinematografi dan penyiaran di sekolah vokasi.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 py-2 text-xs text-teal-dark">
+                            <div class="p-2.5 bg-teal-soft/40 rounded-lg flex items-center gap-2">
+                                <i class="fa-solid fa-link text-teal"></i> Connection & Challenge
+                            </div>
+                            <div class="p-2.5 bg-teal-soft/40 rounded-lg flex items-center gap-2">
+                                <i class="fa-solid fa-lightbulb text-teal"></i> Concept & Change
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-500 italic">
+                            *Gunakan tombol di sebelah kanan untuk melihat atau mengunduh naskah lengkap essai refleksi Semester 1 dalam format PDF.
+                        </p>
+                    </div>
+
+                    <!-- PDF Upload & Viewer Box -->
+                    <div class="lg:col-span-5 bg-teal-soft/30 p-6 rounded-xl border border-teal/20 text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-teal text-ivory flex items-center justify-center text-2xl mx-auto shadow-md">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-teal-dark text-base">File Refleksi Semester 1</h5>
+                            <p class="text-xs text-gray-500 mt-1">Format PDF - Naskah Refleksi 4C</p>
+                        </div>
+
+                        <div class="flex flex-col gap-2 pt-2">
+                            <!-- [EDIT_LINK_FILE_REFLEKSI_SEMESTER_1.pdf] -->
+                            <button onclick="openPdfModal('[EDIT_LINK_FILE_REFLEKSI_SEMESTER_1.pdf]', 'Refleksi Integratif Semester 1 - Triputri Nurcahyani')" 
+                                    class="w-full py-2.5 bg-teal text-white rounded-xl text-xs font-bold hover:bg-teal-dark transition flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-book-open-reader"></i> Baca Refleksi Semester 1
+                            </button>
+                            
+                            <a href="[EDIT_LINK_FILE_REFLEKSI_SEMESTER_1.pdf]" download target="_blank"
+                               class="w-full py-2.5 bg-white text-teal border border-teal/30 rounded-xl text-xs font-bold hover:bg-teal-soft transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Unduh File PDF
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 2: SEMESTER 2 INTEGRATED ESSAY -->
+            <div id="content-sem2" class="tab-content hidden transition-all duration-300">
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-teal-soft text-teal-dark text-xs font-bold rounded-full">
+                            Penyatuan Seluruh Mata Kuliah Semester 2
+                        </div>
+                        <h4 class="text-2xl font-serif font-bold text-teal-dark">Refleksi Integratif Semester 2</h4>
+                        
+                        <!-- [EDIT_PARAGRAF_REFLEKSI_SEMESTER_2] -->
+                        <p class="text-sm text-slateDark leading-relaxed">
+                            Pada Semester 2, refleksi disusun dalam satu <strong>kesatuan narasi essai berbasis 4C</strong> yang merangkum pengalaman PPL II terbimbing, Design Thinking dalam pendidikan, Projek Kepemimpinan, serta Praktik Pembelajaran Inovatif. Narasi ini secara tersirat memperlihatkan transformasi calon guru dalam merancang proyek film mandiri siswa, asesmen autentik, dan kemitraan dengan dunia industri penyiaran.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 py-2 text-xs text-teal-dark">
+                            <div class="p-2.5 bg-teal-soft/40 rounded-lg flex items-center gap-2">
+                                <i class="fa-solid fa-diagram-project text-teal"></i> PjBL & Design Thinking
+                            </div>
+                            <div class="p-2.5 bg-teal-soft/40 rounded-lg flex items-center gap-2">
+                                <i class="fa-solid fa-arrows-spin text-teal"></i> Refleksi Kritis 4C
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-500 italic">
+                            *Silakan gunakan tombol akses file untuk membaca atau mengunduh dokumen refleksi Semester 2.
+                        </p>
+                    </div>
+
+                    <!-- PDF Upload & Viewer Box -->
+                    <div class="lg:col-span-5 bg-teal-soft/30 p-6 rounded-xl border border-teal/20 text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-teal text-ivory flex items-center justify-center text-2xl mx-auto shadow-md">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-teal-dark text-base">File Refleksi Semester 2</h5>
+                            <p class="text-xs text-gray-500 mt-1">Format PDF - Naskah Refleksi 4C</p>
+                        </div>
+
+                        <div class="flex flex-col gap-2 pt-2">
+                            <!-- [EDIT_LINK_FILE_REFLEKSI_SEMESTER_2.pdf] -->
+                            <button onclick="openPdfModal('[EDIT_LINK_FILE_REFLEKSI_SEMESTER_2.pdf]', 'Refleksi Integratif Semester 2 - Triputri Nurcahyani')" 
+                                    class="w-full py-2.5 bg-teal text-white rounded-xl text-xs font-bold hover:bg-teal-dark transition flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-book-open-reader"></i> Baca Refleksi Semester 2
+                            </button>
+                            
+                            <a href="[EDIT_LINK_FILE_REFLEKSI_SEMESTER_2.pdf]" download target="_blank"
+                               class="w-full py-2.5 bg-white text-teal border border-teal/30 rounded-xl text-xs font-bold hover:bg-teal-soft transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Unduh File PDF
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 3: PPG OVERALL REFLECTION & LK 3 -->
+            <div id="content-ppg" class="tab-content hidden transition-all duration-300">
+                <div class="bg-ivory-card p-8 rounded-2xl border border-teal/10 custom-shadow space-y-8">
+                    
+                    <!-- Section 1: Pandangan Pendidikan (LK 3) -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-teal text-white flex items-center justify-center text-sm font-bold">1</div>
+                            <h4 class="text-lg font-bold text-teal-dark">Pandangan Mengenai Pendidikan di Indonesia</h4>
+                        </div>
+                        <!-- [EDIT_LK3_PANDANGAN_PENDIDIKAN] -->
+                        <p class="text-sm text-slateDark leading-relaxed pl-11">
+                            Setelah mengikuti seluruh alur PPG Prajabatan, saya memandang bahwa pendidikan di Indonesia sedang bergerak ke arah yang lebih humanis dan fleksibel. Khusus di bidang SMK Broadcasting dan Perfilman, pendidikan harus mampu menjembatani kurikulum nasional dengan dinamika cepat industri media digital, mengutamakan penguasaan portofolio nyata murid serta pembentukan karakter berkebinekaan global.
+                        </p>
+                    </div>
+
+                    <!-- Section 2: Upaya Guru Profesional -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-teal text-white flex items-center justify-center text-sm font-bold">2</div>
+                            <h4 class="text-lg font-bold text-teal-dark">Upaya & Langkah Menjadi Guru Profesional</h4>
+                        </div>
+                        <!-- [EDIT_LK3_LANGKAH_PROFESIONAL] -->
+                        <ul class="text-sm text-slateDark space-y-2.5 pl-11 list-disc">
+                            <li>Mengembangkan kompetensi diri secara berkelanjutan melalui sertifikasi industri dan pelatihan media terkini.</li>
+                            <li>Mengintegrasikan metodologi pembelajaran aktif (PjBL) yang memicu kreativitas estetika serta teknis siswa.</li>
+                            <li>Membangun jejaring kerja sama aktif dengan studio produksi film, stasiun TV, dan praktisi penyiaran lokal/nasional.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 3: Rencana Tindak Lanjut (3 Hal Utama) -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-teal text-white flex items-center justify-center text-sm font-bold">3</div>
+                            <h4 class="text-lg font-bold text-teal-dark">Rencana Tindak Lanjut (RTL) Awal Karier</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pl-0 md:pl-11">
+                            
+                            <!-- RTL Item 1 -->
+                            <div class="p-5 rounded-xl bg-teal-soft/40 border border-teal/15 space-y-2">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-teal">Prioritas 1</span>
+                                <h5 class="font-bold text-teal-dark text-sm">Asesmen Diagnostik & Pemetaan Minat</h5>
+                                <p class="text-xs text-slateDark leading-relaxed">
+                                    Melakukan identifikasi awal minat khusus siswa (sutradara, kameramen, editor, atau penulis naskah) untuk pembelajaran berdiferensiasi.
+                                </p>
+                            </div>
+
+                            <!-- RTL Item 2 -->
+                            <div class="p-5 rounded-xl bg-teal-soft/40 border border-teal/15 space-y-2">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-teal">Prioritas 2</span>
+                                <h5 class="font-bold text-teal-dark text-sm">Implementasi Modul Kartu Tantangan</h5>
+                                <p class="text-xs text-slateDark leading-relaxed">
+                                    Menerapkan modul ajar interaktif berbasis kartu tantangan digital untuk meningkatkan motivasi praktik sinematografi di kelas.
+                                </p>
+                            </div>
+
+                            <!-- RTL Item 3 -->
+                            <div class="p-5 rounded-xl bg-teal-soft/40 border border-teal/15 space-y-2">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-teal">Prioritas 3</span>
+                                <h5 class="font-bold text-teal-dark text-sm">Inisiasi Komunitas & Pameran Karya</h5>
+                                <p class="text-xs text-slateDark leading-relaxed">
+                                    Mendirikan ekskul/komunitas perfilman sekolah serta menyelenggarakan festival pemutaran film karya siswa secara berkala.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- File Download Bar LK 3 -->
+                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center flex-wrap gap-3">
+                        <span class="text-xs text-gray-500 font-medium">Dokumen Lengkap LK 3 (Refleksi PPG Overall):</span>
+                        <div class="flex gap-2">
+                            <button onclick="openPdfModal('[EDIT_LINK_FILE_LK3.pdf]', 'Dokumen LK 3 Refleksi PPG - Triputri Nurcahyani')" 
+                                    class="px-4 py-2 bg-teal text-white text-xs font-bold rounded-xl hover:bg-teal-dark transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-eye"></i> Pratinjau LK 3
+                            </button>
+                            <!-- [EDIT_LINK_FILE_LK3.pdf] -->
+                            <a href="[EDIT_LINK_FILE_LK3.pdf]" download target="_blank" 
+                               class="px-4 py-2 bg-teal-soft text-teal-dark text-xs font-bold rounded-xl hover:bg-teal hover:text-white transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-download"></i> Unduh File
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. KARYA INOVASI (MODUL AJAR KARTU TANTANGAN DIGITAL) -->
+    <section id="karya-inovasi" class="py-20 bg-ivory-soft border-t border-b border-teal/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 rounded-full bg-teal-light/20 text-teal-dark text-xs font-bold tracking-wider uppercase">Inovasi Pembelajaran PPG</span>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-teal-dark mt-3">Modul Ajar Berbasis Kartu Tantangan Digital</h3>
+                <p class="text-sm text-slateDark/80 mt-2">Kartu Praktik Interaktif untuk Bidang Studi Broadcasting & Perfilman</p>
+                <div class="w-16 h-1 bg-teal-light mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Identitas, Gagasan & Evaluasi -->
+                <div class="lg:col-span-6 space-y-6">
+                    
+                    <!-- a) Identitas Karya -->
+                    <div class="bg-ivory-card p-6 rounded-2xl border border-teal/10 custom-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-teal text-ivory flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-teal-dark">Identitas Karya Inovasi</h4>
+                                <span class="text-xs text-teal-mid">Spesifikasi Modul</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2.5 text-sm text-slateDark">
+                            <p><strong>Nama Karya:</strong> <span class="text-teal-dark font-semibold">"Digital Challenge Card for Broadcasting & Film"</span></p>
+                            <p><strong>Sasaran Inovasi:</strong> Siswa SMK Program Keahlian Broadcasting & Perfilman (Kelas X / XI)</p>
+                            <p><strong>Mata Pelajaran:</strong> Dasar-Dasar Produksi Broadcast dan Film / Sinematografi</p>
+                        </div>
+                    </div>
+
+                    <!-- b) Gagasan & Riset -->
+                    <div class="bg-ivory-card p-6 rounded-2xl border border-teal/10 custom-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-teal text-ivory flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-teal-dark">Gagasan & Riset Sederhana</h4>
+                        </div>
+                        <div class="space-y-4 text-sm text-slateDark">
+                            <div>
+                                <h5 class="font-bold text-teal-dark mb-1 flex items-center gap-1.5 text-xs uppercase tracking-wide">
+                                    <i class="fa-solid fa-circle-exclamation text-amber-500"></i> Tantangan di Kelas:
+                                </h5>
+                                <p class="text-xs leading-relaxed text-gray-600">
+                                    Siswa sering kali pasif ketika mempelajari teori teknik pengambilan gambar dan meraba-raba saat harus mengeksekusi instruksi praktik yang terlalu abstrak.
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-teal-dark mb-1 flex items-center gap-1.5 text-xs uppercase tracking-wide">
+                                    <i class="fa-solid fa-lightbulb text-teal-light"></i> Gagasan Solusi:
+                                </h5>
+                                <p class="text-xs leading-relaxed text-gray-600">
+                                    Mengembangkan media modul berupa Kartu Tantangan Digital berbasis QR-Code/Web yang mengemas instruksi praktik mikro menjadi tantangan gimik yang seru.
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-teal-dark mb-1 flex items-center gap-1.5 text-xs uppercase tracking-wide">
+                                    <i class="fa-solid fa-chart-line text-teal"></i> Hasil Riset Sederhana:
+                                </h5>
+                                <p class="text-xs leading-relaxed text-gray-600">
+                                    Uji coba di kelas PPL menunjukkan kenaikan partisipasi praktik siswa dari 60% menjadi 92% serta efisiensi waktu pemahaman konsep sinematografi hingga 40%.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- d) Evaluasi Inovasi -->
+                    <div class="bg-ivory-card p-6 rounded-2xl border border-teal/10 custom-shadow">
+                        <h4 class="text-lg font-bold text-teal-dark mb-4">Evaluasi Keberhasilan Inovasi</h4>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div class="p-3 bg-teal-soft/50 rounded-xl">
+                                <p class="text-xs font-bold text-teal">Kebaruan</p>
+                                <p class="text-[11px] text-gray-600 mt-1">Gamisasi Modul Berbasis Kartu Digital</p>
+                            </div>
+                            <div class="p-3 bg-teal-soft/50 rounded-xl">
+                                <p class="text-xs font-bold text-teal">Kreativitas</p>
+                                <p class="text-[11px] text-gray-600 mt-1">Skenario Praktik Film Interaktif</p>
+                            </div>
+                            <div class="p-3 bg-teal-soft/50 rounded-xl">
+                                <p class="text-xs font-bold text-teal">Kebermanfaatan</p>
+                                <p class="text-[11px] text-gray-600 mt-1">Meningkatkan Portofolio Praktik Siswa</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Prototype Card Flip & Document Access -->
+                <div class="lg:col-span-6 space-y-6">
+                    
+                    <!-- c) Interactive Card Simulation Prototype -->
+                    <div class="bg-teal-dark text-ivory p-6 sm:p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-teal-light">Simulasi Modul Interaktif</span>
+                                <h4 class="text-xl font-serif font-bold">Prototype Kartu Tantangan</h4>
+                            </div>
+                            <i class="fa-solid fa-qrcode text-3xl text-teal-light"></i>
+                        </div>
+
+                        <!-- Card Element -->
+                        <div id="challenge-card" class="bg-ivory text-teal-dark p-6 rounded-xl shadow-2xl transition-all duration-500 transform border-2 border-teal-light min-h-[220px] flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-3">
+                                    <span id="card-level" class="px-2.5 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase">Tantangan Level 1</span>
+                                    <span class="text-xs text-gray-400"><i class="fa-solid fa-clock"></i> 15 Menit</span>
+                                </div>
+                                <h5 id="card-title" class="font-bold text-base text-teal-dark mb-2">"The Dramatic Low-Angle Shot"</h5>
+                                <p id="card-desc" class="text-xs text-slateDark/80 leading-relaxed">
+                                    Buatlah rekaman video 15 detik memakai teknik Low Angle Dolly Shot untuk memberi kesan karakter yang dominan dan intimidating!
+                                </p>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-t border-gray-200">
+                                <button onclick="nextChallenge()" class="w-full py-2 bg-teal text-white text-xs font-bold rounded-lg hover:bg-teal-mid transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-shuffle"></i> Acak Tantangan Lainnya
+                                </button>
+                            </div>
+                        </div>
+
+                        <p class="text-[11px] text-ivory/70 mt-4 text-center italic">*Simulasi tampilan layar kartu tantangan digital saat diakses siswa melalui smartphone.</p>
+                    </div>
+
+                    <!-- Actions & Links for Canva / PDF -->
+                    <div class="bg-ivory-card p-6 rounded-2xl border border-teal/10 custom-shadow">
+                        <h4 class="text-lg font-bold text-teal-dark mb-2">Akses File & Desain Inovasi</h4>
+                        <p class="text-xs text-gray-600 mb-6">Unduh Modul Ajar lengkap dan tautan desain templat kartu tantangan digital:</p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- [EDIT_LINK_CANVA_KARTU_TANTANGAN] -->
+                            <a href="[EDIT_LINK_CANVA_KARTU_TANTANGAN]" target="_blank" 
+                               class="p-3.5 rounded-xl border border-teal/20 bg-teal-soft/30 hover:bg-teal hover:text-white transition flex items-center gap-3 group">
+                                <i class="fa-solid fa-palette text-teal group-hover:text-white text-xl"></i>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold">Desain Canva Kartu</p>
+                                    <p class="text-[10px] opacity-75">Buka Link Templat</p>
+                                </div>
+                            </a>
+
+                            <!-- [EDIT_LINK_MODUL_AJAR.pdf] -->
+                            <a href="[EDIT_LINK_MODUL_AJAR.pdf]" download target="_blank" 
+                               class="p-3.5 rounded-xl border border-teal/20 bg-teal-soft/30 hover:bg-teal hover:text-white transition flex items-center gap-3 group">
+                                <i class="fa-solid fa-file-pdf text-teal group-hover:text-white text-xl"></i>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold">Modul Ajar PDF</p>
+                                    <p class="text-[10px] opacity-75">Unduh Dokumen RPP</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT & FOOTER -->
+    <section id="contact" class="py-16 bg-teal-dark text-ivory">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-b border-ivory/10 pb-12">
+                
+                <div class="md:col-span-7 space-y-3">
+                    <h3 class="text-2xl sm:text-3xl font-serif font-bold">Mari Terhubung & Berkolaborasi</h3>
+                    <p class="text-sm text-ivory/80 font-light max-w-xl">
+                        Terima kasih telah mengunjungi e-Portofolio Seminar Pendidikan PPG Prajabatan. Saya terbuka untuk diskusi pengembangan kurikulum perfilman, produksi media vokasi, serta kolaborasi edukasi.
+                    </p>
+                </div>
+
+                <div class="md:col-span-5 flex flex-col space-y-3">
+                    <!-- [EDIT_EMAIL] -->
+                    <a href="mailto:[EDIT_EMAIL_ANDA@gmail.com]" class="p-3 bg-white/10 rounded-xl hover:bg-teal-light hover:text-teal-dark transition flex items-center gap-3 text-sm">
+                        <i class="fa-solid fa-envelope text-teal-light"></i>
+                        <span>[EDIT_EMAIL_ANDA@gmail.com]</span>
+                    </a>
+                    <!-- [EDIT_LINKEDIN] -->
+                    <a href="[EDIT_LINK_LINKEDIN]" target="_blank" class="p-3 bg-white/10 rounded-xl hover:bg-teal-light hover:text-teal-dark transition flex items-center gap-3 text-sm">
+                        <i class="fa-brands fa-linkedin text-teal-light"></i>
+                        <span>LinkedIn: Triputri Nurcahyani</span>
+                    </a>
+                    <!-- [EDIT_INSTAGRAM] -->
+                    <a href="[EDIT_LINK_INSTAGRAM]" target="_blank" class="p-3 bg-white/10 rounded-xl hover:bg-teal-light hover:text-teal-dark transition flex items-center gap-3 text-sm">
+                        <i class="fa-brands fa-instagram text-teal-light"></i>
+                        <span>@triputri_broadcasting</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center text-xs text-ivory/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Triputri Nurcahyani, S.Sos. - PPG Prajabatan Broadcasting dan Perfilman.</p>
+                <p class="italic">Mata Kuliah: Seminar Pendidikan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF & DOCUMENT LIGHTBOX MODAL -->
+    <div id="pdf-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-ivory rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-teal/20">
+            <!-- Modal Header -->
+            <div class="p-4 bg-teal-dark text-white flex justify-between items-center">
+                <h4 id="pdf-modal-title" class="font-bold text-sm sm:text-base flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf text-teal-light"></i> Dokumen Pratinjau
+                </h4>
+                <button onclick="closePdfModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body / Embed Viewer -->
+            <div class="flex-1 bg-gray-100 relative">
+                <iframe id="pdf-modal-iframe" src="" class="w-full h-full border-none"></iframe>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3 bg-ivory border-t border-gray-200 flex justify-between items-center text-xs">
+                <span class="text-gray-500 italic">*Jika PDF tidak muncul, silakan gunakan tombol unduh.</span>
+                <a id="pdf-modal-download" href="" download target="_blank" class="px-4 py-2 bg-teal text-white font-bold rounded-lg hover:bg-teal-dark transition">
+                    <i class="fa-solid fa-download"></i> Unduh PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Dynamic Hero Background Slideshow
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const slideDots = document.querySelectorAll('.slide-dot');
+        let currentSlide = 0;
+
+        function setSlide(index) {
+            heroSlides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                }
+            });
+
+            slideDots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('w-2', 'bg-ivory/50');
+                    dot.classList.add('w-8', 'bg-teal-light');
+                } else {
+                    dot.classList.remove('w-8', 'bg-teal-light');
+                    dot.classList.add('w-2', 'bg-ivory/50');
+                }
+            });
+
+            currentSlide = index;
+        }
+
+        // Automatic Carousel Slide Timer (5 Seconds)
+        setInterval(() => {
+            let next = (currentSlide + 1) % heroSlides.length;
+            setSlide(next);
+        }, 5000);
+
+        // 3. Learning Journey Tab Switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-teal', 'text-white', 'shadow-md');
+                btn.classList.add('text-teal-dark');
+            });
+
+            if (tab === 'sem1') {
+                document.getElementById('content-sem1').classList.remove('hidden');
+                document.getElementById('tab-sem1').classList.add('bg-teal', 'text-white', 'shadow-md');
+                document.getElementById('tab-sem1').classList.remove('text-teal-dark');
+            } else if (tab === 'sem2') {
+                document.getElementById('content-sem2').classList.remove('hidden');
+                document.getElementById('tab-sem2').classList.add('bg-teal', 'text-white', 'shadow-md');
+                document.getElementById('tab-sem2').classList.remove('text-teal-dark');
+            } else if (tab === 'ppg') {
+                document.getElementById('content-ppg').classList.remove('hidden');
+                document.getElementById('tab-ppg').classList.add('bg-teal', 'text-white', 'shadow-md');
+                document.getElementById('tab-ppg').classList.remove('text-teal-dark');
+            }
+        }
+
+        // 4. Interactive Simulation for Digital Challenge Cards
+        const challengeData = [
+            {
+                level: "Tantangan Level 1",
+                title: '"The Dramatic Low-Angle Shot"',
+                desc: 'Buatlah rekaman video 15 detik memakai teknik Low Angle Dolly Shot untuk memberi kesan karakter yang dominan dan intimidating!'
+            },
+            {
+                level: "Tantangan Level 2",
+                title: '"3-Point Rembrandt Lighting"',
+                desc: 'Atur susunan lampu Key, Fill, dan Backlight dengan rasio kontras 3:1 untuk memunculkan segitiga cahaya khas Rembrandt di pipi subjek.'
+            },
+            {
+                level: "Tantangan Level 3",
+                title: '"Foley Sound FX Challenge"',
+                desc: 'Rekam 3 variasi suara efek fologi buatan sendiri (misal: jejak langkah di kerikil) lalu selaraskan dengan tayangan adegan film bisu!'
+            }
+        ];
+
+        let challengeIndex = 0;
+
+        function nextChallenge() {
+            challengeIndex = (challengeIndex + 1) % challengeData.length;
+            const item = challengeData[challengeIndex];
+
+            const card = document.getElementById('challenge-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(8px)';
+
+            setTimeout(() => {
+                document.getElementById('card-level').innerText = item.level;
+                document.getElementById('card-title').innerText = item.title;
+                document.getElementById('card-desc').innerText = item.desc;
+
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200);
+        }
+
+        // 5. PDF Modal Viewer Logic
+        function openPdfModal(fileUrl, title) {
+            document.getElementById('pdf-modal-title').innerText = title;
+            document.getElementById('pdf-modal-iframe').src = fileUrl;
+            document.getElementById('pdf-modal-download').href = fileUrl;
+            document.getElementById('pdf-modal').classList.remove('hidden');
+        }
+
+        function closePdfModal() {
+            document.getElementById('pdf-modal').classList.add('hidden');
+            document.getElementById('pdf-modal-iframe').src = '';
+        }
+    </script>
+</body>
+</html>
